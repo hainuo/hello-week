@@ -71,11 +71,8 @@ export class HelloWeek {
         }
 
         this.daysHighlight = this.options.daysHighlight ? this.options.daysHighlight : [];
-
-        Utilities.readFile(this.options.langFolder + this.options.lang + '.json', (text: any) => {
-            this.langs = JSON.parse(text);
-            this.init(() => { /** callback function */ });
-        });
+        this.langs = (<any>window).Locale[this.options.lang];
+        this.init(() => { /** callback function */ });
     }
 
     /**
@@ -637,7 +634,7 @@ export class HelloWeek {
     }
 }
 
-import { HelloWeek as MyHelloWeek } from './hello-week';
+import { HelloWeek as MyHelloWeek } from './app';
 export namespace MyModule {
     export const HelloWeek = MyHelloWeek;
 }

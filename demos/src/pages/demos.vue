@@ -29,6 +29,7 @@
                 langPrefix: 'hljs language-'
             });
             Utils.readFile(fiile, (responseText) => {
+                console.log('INIT');
                 this.markdown = md.render(responseText);
                 this.$nextTick(function () {
                     Prism.highlightAll();
@@ -38,7 +39,10 @@
                         onNavigation: this.updateInfo,
                         onSelect: this.updateInfo
                     })
+                    console.log(options);
                     this.calendar = new HelloWeek(options);
+                    console.log('LOG');
+                    console.log("this.calendar", this.calendar);
                 });
             });
         },
